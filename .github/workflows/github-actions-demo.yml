@@ -20,7 +20,7 @@ jobs:
         java-version: '8'
     
     - name: maven building
-      run: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Xmx512m
+      run: MAVEN_OPTS="-Xmx4g" mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
     - name: timezone setting
       run: echo "TZ=Asia/Shanghai" >> $GITHUB_ENV
