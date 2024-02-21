@@ -16,5 +16,11 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v4
       with:
-        distribution: 'zulu'
+        distribution: 'adopt'
         java-version: '8'
+    
+    - name: maven building
+      run: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+    - name: timezone setting
+      run: |
