@@ -21,12 +21,22 @@ jobs:
     
     - name: maven building
       run: MAVEN_OPTS="-Xmx8g" mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+      id: buildmvn
 
     - name: timezone setting
       run: echo "TZ=Asia/Shanghai" >> $GITHUB_ENV
+      id: timezone
 
-    - name: Report generation in Cobertura
-      run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
+    # - name: Report generation in Cobertura
+    #   run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
+    #   if: success()
 
+  coverage:
+    needs: buildmvn,timezone
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
     - name: Uploading the code coverage
       run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
+
+    
