@@ -27,6 +27,3 @@ jobs:
 
     - name: Report generation in Cobertura
       run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
-
-    - name: uploading code coverage to codecov
-      run: bash <(curl -s https://codecov.io/bash)
