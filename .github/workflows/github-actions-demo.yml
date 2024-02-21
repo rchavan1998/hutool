@@ -1,3 +1,4 @@
+#migration complete
 name: Manually Migrated Github Actions Workflow
 
 on:
@@ -18,6 +19,7 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: '8'
+        cache: 'maven' 
   
     - name: maven building
       run: MAVEN_OPTS="-Xmx16g" mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
@@ -30,7 +32,7 @@ jobs:
     - name: Report generation in Cobertura
       run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
       if: success()
-          
+
     - name: Uploading the code coverage
       run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
 
