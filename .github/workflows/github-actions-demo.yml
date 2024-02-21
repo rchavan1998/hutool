@@ -1,4 +1,4 @@
-name: Manually Migrated Workflow
+name: Manually Migrated Github Actions Workflow
 
 on:
   push:
