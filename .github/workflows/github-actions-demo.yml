@@ -3,7 +3,7 @@ name: Manually Migrated Github Actions Workflow
 on:
   push:
     branches:
-      - main
+      - v5-master
 
 jobs:
   build:
