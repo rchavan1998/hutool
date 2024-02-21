@@ -20,7 +20,7 @@ jobs:
         java-version: '8'
   
     - name: maven building
-      run: MAVEN_OPTS="-Xmx8g" mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+      run: MAVEN_OPTS="-Xmx16g" mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       id: buildmvn
 
     - name: timezone setting
