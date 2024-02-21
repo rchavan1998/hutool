@@ -12,3 +12,10 @@ jobs:
     steps:
     - name : Checkout Repo
       uses: actions/checkout@v4
+
+     - name: Set up JDK
+       uses: actions/setup-java@v4
+       with:
+          distribution: 'adopt'
+          java-version: '8'
+
