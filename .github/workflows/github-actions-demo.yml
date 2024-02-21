@@ -36,6 +36,9 @@ jobs:
     runs-on: ubuntu-latest
     if: success()
     steps:
+    - name: Checkout Repo 
+      uses: actions/checkout@v4
+
     - name: Uploading the code coverage
       run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
 
