@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name : Checkout Repo
+    - name: Checkout Repo
       uses: actions/checkout@v4
 
-     - name: Set up JDK
-       uses: actions/setup-java@v4
-       with:
-          distribution: 'adopt'
-          java-version: '8'
-
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'adopt'
+        java-version: '8'
