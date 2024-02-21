@@ -27,3 +27,6 @@ jobs:
 
     - name: Report generation in Cobertura
       run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
+
+    - name: Uploading the code coverage
+      run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
