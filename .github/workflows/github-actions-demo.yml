@@ -18,7 +18,7 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: '8'
-    
+  
     - name: maven building
       run: MAVEN_OPTS="-Xmx8g" mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       id: buildmvn
@@ -32,7 +32,7 @@ jobs:
     #   if: success()
 
   coverage:
-    needs: buildmvn,timezone
+    needs: build
     runs-on: ubuntu-latest
     if: success()
     steps:
