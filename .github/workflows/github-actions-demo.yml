@@ -25,3 +25,7 @@ jobs:
     - name: timezone setting
       run: echo "TZ=Asia/Shanghai" >> $GITHUB_ENV
 
+    - name: Report generation in Cobertura
+      run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
+
+  
