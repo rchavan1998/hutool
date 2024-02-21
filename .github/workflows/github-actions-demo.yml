@@ -23,4 +23,5 @@ jobs:
       run: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
     - name: timezone setting
-      run: |
+      run: echo "TZ=Asia/Shanghai" >> $GITHUB_ENV
+
