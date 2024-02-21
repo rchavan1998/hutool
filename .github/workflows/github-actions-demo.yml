@@ -27,19 +27,19 @@ jobs:
       run: echo "TZ=Asia/Shanghai" >> $GITHUB_ENV
       id: timezone
 
-    # - name: Report generation in Cobertura
-    #   run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
-    #   if: success()
-
-  coverage:
-    needs: build
-    runs-on: ubuntu-latest
-    if: success()
-    steps:
-    - name: Checkout Repo 
-      uses: actions/checkout@v4
-
-    - name: Uploading the code coverage
+    - name: Report generation in Cobertura
       run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
+      if: success()
+
+  # coverage:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   if: success()
+  #   steps:
+  #   - name: Checkout Repo 
+  #     uses: actions/checkout@v4
+
+  #   - name: Uploading the code coverage
+  #     run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
 
     
