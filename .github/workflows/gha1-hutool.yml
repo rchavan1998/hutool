@@ -1,0 +1,39 @@
+matrix:
+  language: java
+  os:
+    windows-latest
+    ubuntu-latest
+
+name: placeholder_Name
+
+on:
+  pull_request
+  push:
+    branches:
+    - branch-1
+
+jobs:
+  build:
+    strategy:
+      matrix
+      fail-fast: FALSE
+    runs-on: ubuntu-latest
+    steps:
+      with: path
+      with:
+        java-version:
+          ${{ matrix.java }}
+          1.8
+        dependencies-cache-enabled: FALSE
+      uses: actions/setup-java@version
+      with:
+        path: ~/.maven-
+        key: ${{ runner.os }}-maven-${{ hashfiles(arg) }}
+      uses: actions/cache@version
+      uses: actions/checkout@version
+    - name: set up jdk 1.8
+      run: bash <(curl -s https://codecov.io/bash)
+
+macos:
+  jdk: openjdk8
+
