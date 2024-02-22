@@ -1,8 +1,8 @@
-matrix:
-  language: java
-  os:
-    - windows-latest
-    - ubuntu-latest
+# matrix:
+#   language: java
+#   os:
+#     - windows-latest
+#     - ubuntu-latest
 
 name: placeholder_Name
 
@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         java: 
-          -'1.8'
+          - '1.8'
       fail-fast: FALSE
     runs-on: ubuntu-latest
     steps:
@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'adopt'
-          java-version: '8'
+          java-version: ${{matrix.java}}
           
 
     #     dependencies-cache-enabled: FALSE
