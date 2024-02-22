@@ -43,12 +43,19 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: bash <(curl -s https://codecov.io/bash)
 
-      - name: Code coverage - Windows
-        if: matrix.os == 'windows-latest'
-        run: |
-          $codecovScript = (Invoke-WebRequest -Uri "https://codecov.io/bash").Content
-          Set-Content -Path codecov-script.sh -Value $codecovScript
-          bash codecov-script.sh
+      - name: maven building
+        run: MAVEN_OPTS="-Xmx16g" mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+        id: buildmvn
+
+      
+      
+      #code coverage fails for windows
+      # - name: Code coverage - Windows
+      #   if: matrix.os == 'windows-latest'
+      #   run: |
+      #     $codecovScript = (Invoke-WebRequest -Uri "https://codecov.io/bash").Content
+      #     Set-Content -Path codecov-script.sh -Value $codecovScript
+      #     bash codecov-script.sh
     
    
     
