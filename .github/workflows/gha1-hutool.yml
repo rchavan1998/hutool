@@ -20,22 +20,26 @@ jobs:
           -1.8
       fail-fast: FALSE
     runs-on: ubuntu-latest
-    
     steps:
-      with: path
-      with:
-        java-version:
-          ${{ matrix.java }}
-          1.8
-        dependencies-cache-enabled: FALSE
-      uses: actions/setup-java@version
-      with:
-        path: ~/.maven-
-        key: ${{ runner.os }}-maven-${{ hashfiles(arg) }}
-      uses: actions/cache@version
-      uses: actions/checkout@version
-    - name: set up jdk 1.8
-      run: bash <(curl -s https://codecov.io/bash)
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+          
+
+    #     dependencies-cache-enabled: FALSE
+    #   uses: actions/setup-java@version
+    #   with:
+    #     path: ~/.maven-
+    #     key: ${{ runner.os }}-maven-${{ hashfiles(arg) }}
+    #   uses: actions/cache@version
+    #   uses: actions/checkout@version
+    # - name: set up jdk 1.8
+    #   run: bash <(curl -s https://codecov.io/bash)
 
 macos:
   jdk: openjdk8
+
