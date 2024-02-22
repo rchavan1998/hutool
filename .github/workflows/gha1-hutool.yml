@@ -40,11 +40,11 @@ jobs:
               ${{ runner.os }}-maven-    
 
       - name: code coverage
-        run: bash <(curl -s https://codecov.io/bash)
+        run: |
+          Invoke-Expression -Command (curl -s https://codecov.io/bash)
     
    
-    #   run: bash <(curl -s https://codecov.io/bash)
-
+    
 # macos:
 #   jdk: openjdk8
 
