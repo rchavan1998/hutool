@@ -31,13 +31,15 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: ${{matrix.java}}
-          
 
-    #     dependencies-cache-enabled: FALSE
-    #   uses: actions/setup-java@version
-    #   with:
-    #     path: ~/.maven-
-    #     key: ${{ runner.os }}-maven-${{ hashfiles(arg) }}
+       - name: Cache dependencies
+          uses: actions/cache@v2
+          with:
+            path: ~/.maven
+            key: ${{ runner.os }}-maven-${{ hashFiles('**/*.xml') }}
+            restore-keys: |
+              ${{ runner.os }}-maven-    
+
     #   uses: actions/cache@version
     #   uses: actions/checkout@version
     # - name: set up jdk 1.8
