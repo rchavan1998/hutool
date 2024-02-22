@@ -46,8 +46,9 @@ jobs:
       - name: Code coverage - Windows
         if: matrix.os == 'windows-latest'
         run: |
-          $codecovScript = (Invoke-WebRequest -Uri "https://codecov.io/bash").Content
-          Invoke-Expression -Command $codecovScript
+        $codecovScript = (Invoke-WebRequest -Uri "https://codecov.io/bash").Content
+        Set-Content -Path codecov-script.sh -Value $codecovScript
+        bash codecov-script.sh
     
    
     
