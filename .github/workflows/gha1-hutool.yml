@@ -39,9 +39,15 @@ jobs:
           restore-keys: |
               ${{ runner.os }}-maven-    
 
-      - name: code coverage
+      - name: Code coverage - Ubuntu
+        if: matrix.os == 'ubuntu-latest'
+        run: bash <(curl -s https://codecov.io/bash)
+
+      - name: Code coverage - Windows
+        if: matrix.os == 'windows-latest'
         run: |
-          Invoke-Expression -Command (curl -s https://codecov.io/bash)
+          $codecovScript = curl -s https://codecov.io/bash
+          Invoke-Expression -Command $codecovScript
     
    
     
