@@ -15,9 +15,12 @@ on:
 jobs:
   build:
     strategy:
-      matrix
+      matrix:
+        java: 
+          -1.8
       fail-fast: FALSE
     runs-on: ubuntu-latest
+    
     steps:
       with: path
       with:
