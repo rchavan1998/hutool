@@ -1,16 +1,16 @@
 matrix:
   language: java
   os:
-    windows-latest
-    ubuntu-latest
+    - windows-latest
+    - ubuntu-latest
 
 name: placeholder_Name
 
 on:
-  pull_request
+  pull_request:
   push:
     branches:
-    - branch-1
+      - branch-1
 
 jobs:
   build:
@@ -36,4 +36,3 @@ jobs:
 
 macos:
   jdk: openjdk8
-
