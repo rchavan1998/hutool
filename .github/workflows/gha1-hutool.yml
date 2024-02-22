@@ -39,15 +39,25 @@ jobs:
           restore-keys: |
               ${{ runner.os }}-maven-    
 
-      - name: Code coverage - Ubuntu
-        if: matrix.os == 'ubuntu-latest'
-        run: bash <(curl -s https://codecov.io/bash)
+      #code coverage expected in cobertura
+      # - name: Code coverage - Ubuntu
+      #   if: matrix.os == 'ubuntu-latest'
+      #   run: bash <(curl -s https://codecov.io/bash)
 
       - name: maven building
         run: MAVEN_OPTS="-Xmx16g" mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
         id: buildmvn
 
-      
+      - name: timezone setting
+        run: echo "TZ=Asia/Shanghai" >> $GITHUB_ENV
+        id: timezone
+
+      - name: Report generation in Cobertura
+        run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
+        if: success()
+
+      - name: Uploading the code coverage
+        run: mvn cobertura:cobertura -Dcobertura.report.format=xml -Dmaven.javadoc.skip=true
       
       #code coverage fails for windows
       # - name: Code coverage - Windows
